@@ -1,0 +1,35 @@
+.c-results-table {
+
+    margin-left: 10px;
+
+    td {
+        display: block;
+    }
+
+    tr {
+        display: block;
+        border-bottom: 1px solid black;
+        margin: 10px 0;
+        padding: 10px 0;
+    }
+
+    @media (min-width: $mobile-size) {
+        text-align: center;
+        margin-left: 50px;
+
+        th, td {
+            padding: 0 8px;
+        }
+
+        td {
+            display: table-cell;
+        }
+
+        tr {
+            display: table-row;
+            border-bottom: none;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}

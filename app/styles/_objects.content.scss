@@ -1,0 +1,9 @@
+
+.o-content {
+    max-width: 1600px;
+
+    @media (min-width: $mobile-size) {
+        margin: auto;
+        min-width: $mobile-size;
+    }
+}

@@ -1,0 +1,12 @@
+
+.u-hidden--mobile {
+    @media (max-width: $mobile-size - 1) {
+        display: none !important;
+    }
+}
+
+.u-hidden--desk {
+    @media (min-width: $mobile-size) {
+        display: none !important;
+    }
+}

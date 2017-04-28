@@ -1,72 +1,79 @@
 <broadbandheader></broadbandheader>
 
-<filters></filters>
 
-<div>
-    <table>
-        <tr>
-            <th>
-                About
-            </th>
-            <th>
-                contract length
-            </th>
-            <th>
-                speed/usage
-            </th>
-            <th>
-                Offer
-            </th>
-            <th>
-                TV
-            </th>
-            <th>
-                Mobile
-            </th>
-            <th>
-                Cost
-            </th>
-        </tr>
-        <tr ng-repeat="deal in displayedDeals">
-            <td>
-                {{ deal.title }}
-            </td>
-            <td>
-                {{ deal.contractLength }}
-            </td>
-            <td>
-                {{ deal.speed.label }}
-                <br />
-                {{ deal.usage.label }}
-            </td>
-            <td>
-                <img ng-src="{{ deal.offer.smallLogo }}" alt="{{ deal.offer.title }}"/>
-            </td>
-            <td>
-                <div ng-if="deal.popularChannels.length">
-                    N/A
-                </div>
-                <div ng-repeat="channel in deal.popularChannels">
-                    <img ng-src="{{ channel.logo }}" alt="{{ channel.name }}" />
-                </div>
-            </td>
-            <td>
-                <div ng-if="!deal.mobile">
-                    N/A
-                </div>
-                <div ng-if="deal.mobile">
-                    Data: {{ deal.mobile.data.label }}
+<div class="o-content o-layout">
+
+    <div class="o-layout__item c-main-table__filters u-hidden--mobile">
+        <filters></filters>
+    </div>
+
+    <div class="o-layout__item">
+        <table class="c-results-table">
+            <tr class="u-hidden--mobile">
+                <th>
+                    About
+                </th>
+                <th>
+                    contract length
+                </th>
+                <th>
+                    speed/usage
+                </th>
+                <th>
+                    Offer
+                </th>
+                <th>
+                    TV
+                </th>
+                <th>
+                    Mobile
+                </th>
+                <th>
+                    Cost
+                </th>
+            </tr>
+            <tr ng-repeat="deal in displayedDeals">
+                <td>
+                    {{ deal.title }}
+                </td>
+                <td>
+                    {{ deal.contractLength }}months
+                </td>
+                <td>
+                    {{ deal.speed.label }} MB
                     <br />
-                    Minutes: {{ deal.mobile.minutes.label }}
-                    <br />
-                    Texts: {{ deal.mobile.texts.label }}
-                    <br />
-                    Connection: {{ deal.mobile.connectionType.label }}
-                </div>
-            </td>
-            <td>
-                {{ deal.prices[0].totalContractCost | currency:'£' }}
-            </td>
-        </tr>
-    </table>
+                    {{ deal.usage.label }}
+                </td>
+                <td>
+                    <img ng-src="{{ deal.offer.smallLogo }}" alt="{{ deal.offer.title }}"/>
+                </td>
+                <td>
+                    <div class="u-hidden--mobile" ng-if="deal.popularChannels.length">
+                        N/A
+                    </div>
+                    <div ng-repeat="channel in deal.popularChannels">
+                        <img ng-src="{{ channel.logo }}" alt="{{ channel.name }}" />
+                    </div>
+                </td>
+                <td>
+                    <div class="u-hidden--mobile" ng-if="!deal.mobile">
+                        N/A
+                    </div>
+                    <div ng-if="deal.mobile">
+                        Data: {{ deal.mobile.data.label }}
+                        <br />
+                        Minutes: {{ deal.mobile.minutes.label }}
+                        <br />
+                        Texts: {{ deal.mobile.texts.label }}
+                        <br />
+                        Connection: {{ deal.mobile.connectionType.label }}
+                    </div>
+                </td>
+                <td>
+                    {{ deal.prices[0].totalContractCost | currency:'£' }}
+                </td>
+            </tr>
+        </table>
+    </div>
+
 </div>

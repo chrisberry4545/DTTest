@@ -1,25 +1,106 @@
-/* app css stylesheet */
+/**
+    SETTINGS
+*/
+/**
+    TOOLS
+*/
+/**
+    GENERICS
+*/
+/**
+    ELEMENTS
+*/
+/**
+    OBJECTS
+*/
+.o-layout {
+  display: flex; }
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
+.o-layout__item {
+  align-items: stetch;
+  vertical-align: top; }
 
-.menu:before {
-  content: "[";
-}
+.o-content {
+  max-width: 1600px; }
+  @media (min-width: 800px) {
+    .o-content {
+      margin: auto;
+      min-width: 800px; } }
 
-.menu:after {
-  content: "]";
-}
+/**
+    COMPONENTS
+*/
+.c-button--no-style {
+  background: none;
+  border: none; }
 
-.menu > li {
-  display: inline;
-}
+.c-header {
+  background: #dedede;
+  position: relative; }
 
-.menu > li + li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
+.c-header__inner {
+  padding-right: 50px; }
+  @media (min-width: 800px) {
+    .c-header__inner {
+      padding-right: 0; } }
+
+.c-header__logo {
+  max-width: 100%; }
+
+.c-header__menu-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%); }
+
+.c-header__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #333;
+  color: white;
+  height: 100vh;
+  width: 300px; }
+
+.c-main-table__filters {
+  background: #dedede;
+  min-height: 100vh;
+  min-width: 200px;
+  padding: 0 10px; }
+
+.c-results-table {
+  margin-left: 10px; }
+  .c-results-table td {
+    display: block; }
+  .c-results-table tr {
+    display: block;
+    border-bottom: 1px solid black;
+    margin: 10px 0;
+    padding: 10px 0; }
+  @media (min-width: 800px) {
+    .c-results-table {
+      text-align: center;
+      margin-left: 50px; }
+      .c-results-table th, .c-results-table td {
+        padding: 0 8px; }
+      .c-results-table td {
+        display: table-cell; }
+      .c-results-table tr {
+        display: table-row;
+        border-bottom: none;
+        margin: 0;
+        padding: 0; } }
+
+.c-select-box {
+  color: black; }
+
+/**
+    TRUMOPS
+*/
+@media (max-width: 799px) {
+  .u-hidden--mobile {
+    display: none !important; } }
+
+@media (min-width: 800px) {
+  .u-hidden--desk {
+    display: none !important; } }

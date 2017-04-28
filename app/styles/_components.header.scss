@@ -1,0 +1,34 @@
+
+
+.c-header {
+  background: $menu-background;
+  position: relative;
+}
+
+.c-header__inner {
+  padding-right: 50px;
+  @media (min-width: $mobile-size) {
+    padding-right: 0;
+  }  
+}
+
+.c-header__logo {
+  max-width: 100%;
+}
+
+.c-header__menu-button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.c-header__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #333;
+  color: white;
+  height: 100vh;
+  width: 300px;
+}

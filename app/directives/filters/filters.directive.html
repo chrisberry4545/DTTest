@@ -6,8 +6,9 @@
         </li>
     </ul>
     <div>
-        <label for="filter-speed">Speed</label>
-        <select id="filter-speed" ng-model="filterModel.speed.selected" ng-change="updateFilter()">
+        <label for="filter-speed">Speed</label> 
+        <br/>
+        <select id="filter-speed" ng-model="filterModel.speed.selected" ng-change="updateFilter()" class="c-select-box">
             <option ng-repeat="speed in filterModel.speed.possibleSpeeds">{{ speed }}</option>
         </select>
     </div>
