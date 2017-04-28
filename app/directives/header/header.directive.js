@@ -9,13 +9,9 @@ angular.module('dtTestApp.header', []).directive('broadbandheader', function() {
 
             $scope.menuOpen = false;
 
-            $scope.openMenu = function() {
-                $scope.menuOpen = true;
+            $scope.toggleMenu = function() {
+                $scope.menuOpen = !$scope.menuOpen;
             };
-
-            $scope.closeMenu = function() {
-                $scope.menuOpen = false;
-            }
 
         }
     }
