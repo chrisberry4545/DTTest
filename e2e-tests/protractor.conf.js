@@ -8,7 +8,10 @@ exports.config = {
   ],
 
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'chrome',
+    chromeOptions: {
+      args: ['--window-size=400,600']
+    }
   },
 
   baseUrl: 'http://localhost:8000/',
