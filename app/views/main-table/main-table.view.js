@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dtTestApp.mainTable', ['ngRoute', 'dtTestApp.dealsService', 'dtTestApp.utilitiesService', 'dtTestApp.header'])
+angular.module('dtTestApp.mainTable', ['ngRoute', 'dtTestApp.dealsService', 'dtTestApp.utilitiesService', 'dtTestApp.header', 'dtTestApp.filters'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/maintable', {

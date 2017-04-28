@@ -1,18 +1,6 @@
 <broadbandheader></broadbandheader>
 
-<div>
-    <ul>
-        <li ng-repeat="(typeName, type) in filterModel.productTypes">
-            <input type="checkbox" id="{{ 'filter' + typeName }}" ng-model="type.value" ng-change="updateFilter()" /> <label for="{{ 'filter' + typeName }}">{{ type.label }}</label>
-        </li>
-    </ul>
-    <div>
-        <label for="filter-speed">Speed</label>
-        <select id="filter-speed" ng-model="filterModel.speed.selected" ng-change="updateFilter()">
-            <option ng-repeat="speed in filterModel.speed.possibleSpeeds">{{ speed }}</option>
-        </select>
-    </div>
-</div>
+<filters></filters>
 
 <div>
     <table>

@@ -4,7 +4,6 @@
 angular.module('dtTestApp.header', []).directive('broadbandheader', function() {
 
     return {
-        scope: {},
         templateUrl: './directives/header/header.directive.html',
         link: function($scope, element, attrs) {
 
