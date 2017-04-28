@@ -3,8 +3,28 @@
 describe('dtTestApp.mainTable', function() {
 
   beforeEach(function() {
-    
+
+    angular.module('dtTestApp.utilitiesService',[]);
+    angular.module('dtTestApp.dealsService',[]);
     module('dtTestApp.mainTable');
+
+
+    module(function($provide) {
+      $provide.service('dealsService', function() {
+        this.getDeals = function() {
+          return {
+            then: function() {
+
+            }
+          }
+        }
+      });
+      $provide.service('utilitiesService', function() {
+        this.generateUniqueArray = function(array) {
+            return array;
+        };
+      });
+    });
     
   });
 
@@ -16,6 +36,11 @@ describe('dtTestApp.mainTable', function() {
         mainTableViewController = $controller('MainTableViewController', {
           $scope: $scope
         });
+
+        $scope.filterModel = {
+            productTypes: {},
+            speed: {}
+        }
       }));
       
       describe("Given results", function() {
@@ -33,12 +58,8 @@ describe('dtTestApp.mainTable', function() {
 
           beforeEach(function() {
 
-            $scope.filterModel = {
-              productTypes: {
-                'Broadband': {
-                  value: true
-                }
-              }
+            $scope.filterModel.productTypes['Broadband'] = {
+                value: true
             };
             $scope.updateFilter();
 
@@ -66,7 +87,7 @@ describe('dtTestApp.mainTable', function() {
               $scope.displayedDeals.forEach(function(deal) {
                 expect(deal.productTypes.length).toBe(3);
                 expect(deal.productTypes.indexOf('Broadband') > -1).toBe(true);
-                expect(deal.productTypes.indexOf('Mobile') > - 1).toBe(true);
+                expect(deal.productTypes.indexOf('TV') > - 1).toBe(true);
               });
             });
 

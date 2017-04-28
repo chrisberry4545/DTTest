@@ -16,6 +16,45 @@ angular.module('dtTestApp.mainTable', ['ngRoute', 'dtTestApp.dealsService', 'dtT
 
     $scope.updateFilter = function() {
 
+        $scope.displayedDeals = $scope.allDeals;
+
+        var numberOfFiltersActivated = 0;
+        for(var productType in $scope.filterModel.productTypes) {
+            if ($scope.filterModel.productTypes[productType].value) {
+                numberOfFiltersActivated++;
+            }
+        }
+
+        if (numberOfFiltersActivated) {
+
+            $scope.displayedDeals = $scope.allDeals.filter(function(deal) {
+                var dealMeetsAllCriteria = true;
+
+                if (deal.productTypes.length - 1 !== numberOfFiltersActivated) { //Phone is never included
+                    // If the number of filters selected doesn't match the product types of the deal it shouldn't be included
+                    return false;
+                }
+                
+                for (var possibleProductType in $scope.filterModel.productTypes) {
+                    if (
+                        $scope.filterModel.productTypes[possibleProductType].value 
+                        && deal.productTypes.indexOf(possibleProductType) === -1
+                    ) {
+                        dealMeetsAllCriteria = false;
+                    }
+                }
+
+                return dealMeetsAllCriteria;
+            });
+
+        }
+
+        if ($scope.filterModel.speed.selected != null && $scope.filterModel.speed.selected !== anySpeed) {
+            $scope.displayedDeals = $scope.displayedDeals.filter(function(deal) {
+                return deal.speed.label === $scope.filterModel.speed.selected;
+            });
+        }
+
     };
 
     function init() {
@@ -53,8 +92,8 @@ angular.module('dtTestApp.mainTable', ['ngRoute', 'dtTestApp.dealsService', 'dtT
             $scope.allDeals = response.data.deals;
             $scope.displayedDeals = $scope.allDeals;
 
-            $scope.filterModel.possibleSpeeds = [anySpeed];
-            $scope.filterModel.possibleSpeeds = $scope.filterModel.possibleSpeeds.concat(utilitiesService.generateUniqueArray($scope.allDeals.map(function(deal) {
+            $scope.filterModel.speed.possibleSpeeds = [anySpeed];
+            $scope.filterModel.speed.possibleSpeeds = $scope.filterModel.speed.possibleSpeeds.concat(utilitiesService.generateUniqueArray($scope.allDeals.map(function(deal) {
                 return deal.speed.label;
             })).sort());
 

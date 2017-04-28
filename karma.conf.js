@@ -10,6 +10,7 @@ module.exports = function(config) {
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/jquery/dist/jquery.min.js',
       'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
+      'services/*.js',
       'components/**/*.js',
       'views/**/*.js',
       '**/**/*.test.js',
