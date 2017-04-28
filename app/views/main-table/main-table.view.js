@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dtTestApp.mainTable', ['ngRoute'])
+angular.module('dtTestApp.mainTable', ['ngRoute', 'dtTestApp.dealsService', 'dtTestApp.utilitiesService'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/maintable', {
@@ -9,7 +9,10 @@ angular.module('dtTestApp.mainTable', ['ngRoute'])
   });
 }])
 
-.controller('MainTableViewController', ['$scope', function($scope) {
+.controller('MainTableViewController', ['$scope', 'dealsService', 'utilitiesService', function($scope, dealsService, utilitiesService) {
+
+    var anySpeed = 'Any';
+
 
     $scope.updateFilter = function() {
 
@@ -38,13 +41,24 @@ angular.module('dtTestApp.mainTable', ['ngRoute'])
             },
 
             speed: {
-                selected: 'Any',
+                selected: anySpeed,
                 possibleSpeeds: []
             }
 
         };
         
-        // Get Data from service and put in the correct place in the above variables
+        
+        dealsService.getDeals().then(function(response) {
+
+            $scope.allDeals = response.data.deals;
+            $scope.displayedDeals = $scope.allDeals;
+
+            $scope.filterModel.possibleSpeeds = [anySpeed];
+            $scope.filterModel.possibleSpeeds = $scope.filterModel.possibleSpeeds.concat(utilitiesService.generateUniqueArray($scope.allDeals.map(function(deal) {
+                return deal.speed.label;
+            })).sort());
+
+        });
         
     }
 
