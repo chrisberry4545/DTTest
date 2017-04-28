@@ -6,6 +6,8 @@ describe('dtTestApp.mainTable', function() {
 
     angular.module('dtTestApp.utilitiesService',[]);
     angular.module('dtTestApp.dealsService',[]);
+    angular.module('dtTestApp.header',[]);
+    angular.module('dtTestApp.filters',[]);
     module('dtTestApp.mainTable');
 
 
